@@ -1,0 +1,16 @@
+
+.ipynb_checkpoints/
+
+catboost_info/
+
+causalml/
+
+.DS_Store
+
+x_test.csv
+
+conf_matrix.png
+
+x_train.csv
+
+y_train.csv
