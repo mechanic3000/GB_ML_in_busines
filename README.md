@@ -1,4 +1,14 @@
-Attribute Information
+python-flask-docker
+
+Итоговый проект курса "Машинное обучение в бизнесе"
+
+Стек:
+
+ML: sklearn, pandas, numpy API: flask Данные: с kaggle - https://www.kaggle.com/datasets/fedesoriano/heart-failure-prediction
+
+Задача: предсказать по показателям здоровья наличие сердечного заболевания
+
+Используемые признаки:
 
     Age: age of the patient [years]
     Sex: sex of the patient [M: Male, F: Female]
@@ -11,4 +21,21 @@ Attribute Information
     ExerciseAngina: exercise-induced angina [Y: Yes, N: No]
     Oldpeak: oldpeak = ST [Numeric value measured in depression]
     ST_Slope: the slope of the peak exercise ST segment [Up: upsloping, Flat: flat, Down: downsloping]
-    HeartDisease: output class [1: heart disease, 0: Normal]
+
+Преобразования признаков: OneHotEncoder
+
+Модель: XGBClassifier
+
+Клонируем репозиторий и создаем образ
+
+$ git clone https://github.com/mechanic3000/GB_ML_in_busines.git
+$ cd GB_ML_in_busines
+$ docker build -t fimochka/gb_docker_flask_example .
+
+Запускаем контейнер
+
+Здесь Вам нужно создать каталог локально и сохранить туда предобученную модель (<your_local_path_to_pretrained_models> нужно заменить на полный путь к этому каталогу)
+
+$ docker run -d -p 8180:8180 -v <your_local_path>/GB_ML_in_busines/app/models:/app/app/models docker/gb_docker_flask_ml
+
+запросы принимает порт 8180
