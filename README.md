@@ -4,7 +4,9 @@ python-flask-docker
 
 Стек:
 
-ML: sklearn, pandas, numpy API: flask Данные: с kaggle - https://www.kaggle.com/datasets/fedesoriano/heart-failure-prediction
+    ML: sklearn, pandas, numpy 
+    API: flask 
+    Данные: с kaggle - https://www.kaggle.com/datasets/fedesoriano/heart-failure-prediction
 
 Задача: предсказать по показателям здоровья наличие сердечного заболевания
 
@@ -31,13 +33,16 @@ ML: sklearn, pandas, numpy API: flask Данные: с kaggle - https://www.kagg
 ```
 $ git clone https://github.com/mechanic3000/GB_ML_in_busines.git
 $ cd GB_ML_in_busines
-$ docker build -t fimochka/gb_docker_flask_example .
+$ docker build -t ml/gb_docker_flask_XGBClass .
 ```
 
 Запускаем контейнер
 
 Здесь Вам нужно создать каталог локально и сохранить туда предобученную модель (<your_local_path_to_pretrained_models> нужно заменить на полный путь к этому каталогу)
 ```
-$ docker run -d -p 8180:8180 -v <your_local_path>/GB_ML_in_busines/app/models:/app/app/models docker/gb_docker_flask_ml
+$ docker run -d -p 8180:8180 -v <your_local_path>/GB_ML_in_busines/app/models:/app/app/models ml/gb_docker_flask_XGBClass
 ```
-запросы принимает порт 8180
+
+POST запрос в формате JSON (в соответствии с названием признаков) принимает http://<server IP>:8180/predict
+    
+result['predictions'] -> вероятность наличия сердечного заболевания
